@@ -95,67 +95,6 @@ function Sort(x,y){
 lis1=[];
 
 
-
-
-
-//
-
-
-
-function SELECTIOIN2(inputArr){
-
-    lis1=[]
-    let n = inputArr.length;
-    var cou=0;
-    for(var i=0;i<n;i++){
-
-        var v=setTimeout(function(){
-        let min = i;
-
-        var temp=myChart.data.datasets[0].backgroundColor[min];
-        myChart.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
-        console.log('**OUT**');
-        myChart.update();
-        console.log('**OUT**');
-        for(let j = i+1; j < n; j++){
-
-            if(inputArr[j] < inputArr[min]) {
-                min=j;
-                
-            }
-
-        }
-
-        if (min != i) {
-
-             let tmp = inputArr[i]; 
-             inputArr[i] = inputArr[min];
-             inputArr[min] = tmp;   
-
-        }
-
-        //myChart.data.labels=inputArr;
-        //myChart.data.datasets[0].data=inputArr;
-        
-        myChart.data.datasets[0].backgroundColor[i]='rgba(255, 99, 132, 0.2)';
-        
-        
-        //var temp2=myChart.data.datasets[0].borderColor[i];
-        console.log('MIN : ',min);
-        
-        myChart.data.labels=inputArr;
-        myChart.data.datasets[0].data=inputArr;
-        myChart.update();
-        myChart.data.datasets[0].backgroundColor[min]=temp;
-        //myChart.data.datasets[0].backgroundColor[i]=temp2;
-        i=i+1;
-        },1000);
-
-    };
-}
-
-
-
 // This completelly Self Changes
 
 function SELECTION(inputArr){
@@ -223,7 +162,7 @@ function SELECTION(inputArr){
 
         i=i+1;
 
-    },5000);
+    },1000);
 
 
 
@@ -236,6 +175,7 @@ function Sel_sort(){
     Sort(inp_arr,inp_arr);
     
     SELECTION(inp_arr);
+    Time_Compx();
  
 
 }
@@ -275,6 +215,7 @@ function selectionSort(inputArr) {
     
 }
 
+// This Function can help in COMPARING SPEED OF DIFFERENT ALGORITIUMNS
 
 function ARRA(arr,Length){
 
@@ -314,3 +255,44 @@ function ARRA(arr,Length){
 
 
 
+function Time_Compx(){
+
+    var X=[0,2,4,6,8,10,12,14,16,18,20];
+    var Y1=[];
+    var Y2=[];
+    var Y3=[];
+    var Y4=[];
+
+    for (var i=0;i<X.length;i++){
+        Y1.push(X[i]);
+        Y2.push(X[i]**2);
+        //Y3.push(X[i]**3);
+        Y3.push(Math.log10(X[i]));
+    }
+
+    var ctx = document.getElementById('graph').getContext('2d');
+    curves=new Chart(ctx,{
+        type:'line',
+        data:{
+            labels:X,
+            datasets:[{
+                pointHoverBorderWidth:'10px',
+                pointHoverRadius:'5px',
+                backgroundColour:'red',
+                data:Y1
+            },
+        {
+            data:Y2
+        },{
+            data:Y3
+        },
+    {
+        //data:Y4
+    }]
+        }
+    })
+
+
+    console.log(Y1,Y2,Y3,Y4);
+}
+//Time_Compx();
