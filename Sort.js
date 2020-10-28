@@ -97,6 +97,8 @@ lis1=[];
 
 // This completelly Self Changes
 
+var d1={};
+
 function SELECTION(inputArr){
 
     lis1=[]
@@ -124,7 +126,6 @@ function SELECTION(inputArr){
 
             if(inputArr[j] < inputArr[min]) {
                 min=j;
-                
             }
 
         }
@@ -143,10 +144,6 @@ function SELECTION(inputArr){
         myChart.update();
         //myChart.data.labels=inputArr;
         //myChart.data.datasets[0].data=inputArr;
-        
-        
-        
-        
         //var temp2=myChart.data.datasets[0].borderColor[i];
         console.log('MIN : ',min);
         
@@ -159,10 +156,10 @@ function SELECTION(inputArr){
         
         
         //myChart.data.datasets[0].backgroundColor[i]=temp2;
-
+        d1[i]=inputArr;
         i=i+1;
-
-    },1000);
+    
+    },100);
 
 
 
@@ -175,45 +172,12 @@ function Sel_sort(){
     Sort(inp_arr,inp_arr);
     
     SELECTION(inp_arr);
-    Time_Compx();
+    console.log(d1);
+    //Time_Compx();
  
 
 }
 
-
-
-
-
-function selectionSort(inputArr) {
-
-    lis1=[]
-    let n = inputArr.length;
-    var cou=0;
-    for(let i = 0; i < n; i++) {
-      
-        let min = i;
-
-        for(let j = i+1; j < n; j++){
-           
-            if(inputArr[j] < inputArr[min]) {
-
-                min=j;
-
-            }
-         }
-
-         if (min != i) {
-
-             let tmp = inputArr[i]; 
-             inputArr[i] = inputArr[min];
-             inputArr[min] = tmp;    
-
-        }
-        lis1=lis1.concat(inputArr);
-
-}
-    
-}
 
 // This Function can help in COMPARING SPEED OF DIFFERENT ALGORITIUMNS
 
