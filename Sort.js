@@ -23,13 +23,12 @@ function getRandomColor() {
     return color;
 }
 
+/////////////////////////   FOOTER GRAPHS
+var COUNT=0;
 
-console.log(getRandomColor());
+function Sort2(x,y){
 
-var myChart;
-function Sort(x,y){
-
- 
+    
     var al=[];
     for(var ii=0;ii<x.length;ii++){
         al.push(getRandomColor());
@@ -37,18 +36,112 @@ function Sort(x,y){
 
     console.log(al);
 
-    var ctx = document.getElementById('Can').getContext('2d');
-    myChart = new Chart(ctx, {
+    var foot=document.getElementById('footer1');
+    var DIV=document.createElement('div');
+    DIV.id='div_footer'+COUNT;
+    DIV.className='div_footer';
+    var DI='div_footer'+COUNT;
+    foot.appendChild(DIV);
+
+    // document.getElementById(DI).style.height="100px !importent";
+    var get_div=document.getElementById(DI);
+
+    var CA=document.createElement('canvas');
+    CA.className='can_footer';
+    CA.id='can_footer'+COUNT;
+    var v='can_footer'+COUNT;
+
+    get_div.appendChild(CA);
+
+    // document.getElementById(v).style.height="100px !importent" ;
+    document.getElementById(v).style.width="330px" ;
+
+    var ctx2 = document.getElementById(v).getContext('2d');
+
+    myChart2 = new Chart(ctx2, {
 
         type: 'bar',
         data: {
-            labels: x,// ["red", "blue", "green", "blue", "red"]
+            labels: x,// ["red", "blue", "green", "blue", "red", "blue"]
 
             datasets: [{
                 
                 
                 label: '# of Votes',
                 data: y,//[12, 19, 3, 5, 2, 3],
+                
+                backgroundColor: [
+                        
+                     'rgba(255, 99, 132, 0.2)',
+                     'rgba(54, 162, 235, 0.2)',
+                     'rgba(255, 206, 86, 0.2)',
+                     'rgba(75, 192, 192, 0.2)',
+                     'rgba(153, 102, 255, 0.2)',
+                     'rgba(255, 159, 64, 0.2)',
+                     'rgba(25, 109, 64, 0.2)',
+                     'rgba(255, 99, 64, 0.2)',
+                     'rgba(55, 109, 84, 0.2)',
+                     'rgba(255, 9, 64, 0.2)',
+                     'rgba(205, 159, 64, 0.2)',
+                     'rgba(250, 159, 60, 0.2)',
+                 ]
+                ,
+                borderColor: [
+
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)',
+                     'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)'
+
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+}
+///////////////////////
+
+var myChart;
+
+function Sort(x,y){
+
+    var al=[];
+    for(var ii=0;ii<x.length;ii++){
+        al.push(getRandomColor());
+    }
+
+    console.log(al);
+
+    var ctx = document.getElementById('can_left').getContext('2d');
+    myChart = new Chart(ctx, {
+
+        type: 'bar',
+        data: {
+            labels: x,
+
+            datasets: [{
+                
+                
+                label: '# of Votes',
+                data: y,
                 
                 backgroundColor: [
 
@@ -73,7 +166,11 @@ function Sort(x,y){
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(54, 162, 235, 1)',
+                     'rgba(255, 206, 86, 1)',
+                     'rgba(75, 192, 192, 1)',
+                     'rgba(153, 102, 255, 1)',
 
                 ],
                 borderWidth: 1
@@ -92,26 +189,20 @@ function Sort(x,y){
 
 }
 
-lis1=[];
 
 
 // This completelly Self Changes
 
-var d1={};
+
 
 function SELECTION(inputArr){
 
-    lis1=[]
+    
     let n = inputArr.length;
-    var cou=0;
-
     var i=0;
 
 
     var v=setInterval(function(){
-
-       
-
         if(i>=n){
             clearInterval(v);
         }
@@ -138,6 +229,9 @@ function SELECTION(inputArr){
 
         }
 
+        Sort2(inputArr,inputArr);
+        COUNT=COUNT+1;
+
         var temp=myChart.data.datasets[0].backgroundColor[min];
         myChart.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
         console.log('**OUT**');
@@ -156,7 +250,7 @@ function SELECTION(inputArr){
         
         
         //myChart.data.datasets[0].backgroundColor[i]=temp2;
-        d1[i]=inputArr;
+       
         i=i+1;
     
     },100);
@@ -167,7 +261,7 @@ function SELECTION(inputArr){
 
 
 function Sel_sort(){
-
+    COUNT=0;
     let inp_arr=[10,9,35,43,76,21,54,21,34,75,67,3];
     Sort(inp_arr,inp_arr);
     
@@ -211,7 +305,7 @@ function ARRA(arr,Length){
 
         
         
-    },500);
+    },1000);
 
 
 }
@@ -259,4 +353,3 @@ function Time_Compx(){
 
     console.log(Y1,Y2,Y3,Y4);
 }
-//Time_Compx();

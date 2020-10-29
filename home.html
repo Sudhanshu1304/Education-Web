@@ -4,8 +4,8 @@
 
     <head >
         <!-- <link rel="stylesheet" href="demo1.css"> -->
-        <h1>Hello World</h1>
-
+       
+        <link rel="stylesheet" href="home.css">
         <script src="sort.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
@@ -17,35 +17,50 @@
     </head>
     <body>
 
-        <div id='div1' style="width: 50%; height: 10%;">
-
-                <canvas style="width: 100%;" id="Can"></canvas>
+        <header id='page_head'>
+    
+            Sorting Algorithium
+    
+        </header>
+    
+        <div id="up_half" >
+    
+            <div class="com_div1" id="side_bar" >
+                <ul>
+                    <li>Selection Sort</li>
+                    <li>Insertion Sort</li>
+                   
+                </ul>
+            </div>
         
-        </div>
-        <!-- <div id="div2">
-            <canvas style="width: 100%;" id="graph"></canvas>
-        </div> -->
+            <div class="com_div1" id="main" >
+                <header id="main_head_head" >
+                    <div class="main_head" id="array">
+                        <button onclick="Sel_sort()">
+                            Click
+                        </button>
+                    </div>
+                    <div class="main_head" id="speed_down">DOWN</div>
+                    <div class="main_head" id="speed_up">UP</div>
+                </header>
+        
+                <section id="canvas">
+                    <div id='canvas_left'>
+                        <canvas id="can_left">
+                        </canvas>
+                    </div>
+                    <div id="canvas_right" >RIGHT</div>
+                </section>
+    
+                <footer id="footer1" style="display: flex;">
+                    
+                </footer>
+            </div>
+    
             
-
-      
-        <div style="display: none;" id ='div1'>
-
-            <table id="tabl" >
-                <tr>
-                    <th>First</th>
-                    <th>Secound</th>
-                    <th>Third</th>
-        
-                </tr>
-                </table>
-
+    
         </div>
-        
-
-        <button type ='button' onclick="Sel_sort()">Add</button>
        
-    </body>
-
     
     
 </html>
