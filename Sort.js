@@ -54,7 +54,7 @@ function Sort2(x,y){
     get_div.appendChild(CA);
 
     // document.getElementById(v).style.height="100px !importent" ;
-    document.getElementById(v).style.width="330px" ;
+    // document.getElementById(v).style.width="330px" ;
 
     var ctx2 = document.getElementById(v).getContext('2d');
 
@@ -67,7 +67,7 @@ function Sort2(x,y){
             datasets: [{
                 
                 
-                label: '# of Votes',
+                label: 'Pass '+COUNT,
                 data: y,//[12, 19, 3, 5, 2, 3],
                 
                 backgroundColor: [
@@ -105,6 +105,7 @@ function Sort2(x,y){
             }]
         },
         options: {
+           
             responsive: true,
             scales: {
                 yAxes: [{
@@ -177,6 +178,7 @@ function Sort(x,y){
             }]
         },
         options: {
+            maintainAspectRatio:false,
             scales: {
                 yAxes: [{
                     ticks: {
@@ -253,7 +255,7 @@ function SELECTION(inputArr){
        
         i=i+1;
     
-    },100);
+    },1000);
 
 
 

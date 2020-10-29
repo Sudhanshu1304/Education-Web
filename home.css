@@ -72,7 +72,8 @@ li{
 }
 
 footer{
-    background-color: rgb(14, 150, 184);
+    
+    background-color: rgb(0, 0, 0);
     height:20% !important;
 }
 
@@ -95,9 +96,17 @@ footer{
 
 .div_footer{
     height: 100% ;
-    width: 30%;
+    width: 300px !important;
 }
 .can_footer{
     height: 90% !important;
     /* width: 100% !important; */
 }
+
+
+/* This Gives Our Footer Element to Contain the Overflow using scrole Bar  */
+
+ .horizontal-scroll{
+  overflow-y: auto;
+  overflow-wrap: inherit;
+} 
