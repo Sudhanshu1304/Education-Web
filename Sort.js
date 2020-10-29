@@ -11,9 +11,18 @@ function sleep(milliseconds) {
   } 
 
 
+  function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
+////////////////////// To Delete any Element in HTML
 
+function clearBox(elementID)
+{
+    document.getElementById(elementID).innerHTML = "";
+}
 
+////////////////
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
@@ -93,7 +102,10 @@ function Sort2(x,y){
                         beginAtZero: true
                     }
                 }]
-            }
+            },
+            tooltips: {
+                enabled: false
+              }
         }
     });
 
@@ -104,12 +116,7 @@ var myChart;
 
 function Sort(x,y){
 
-  
-    
-
-
-   
-
+    clearBox('can_left');
     var ctx = document.getElementById('can_left').getContext('2d');
     myChart = new Chart(ctx, {
 
@@ -130,14 +137,39 @@ function Sort(x,y){
             }]
         },
         options: {
+            // maintainAspectRatio:false,
+            // scales: {
+            //     yAxes: [{
+            //         ticks: {
+            //             beginAtZero: true
+            //         }
+            //     }]
+            // },
+            // tooltips: {
+            //     enabled: false
+            //   },
+            //   showTooltips:false,
+            //   hover: {mode: null},
+            //   states: {
+            //     hover: {
+            //         filter: {
+            //             type: 'none',
+            //         }
+            //     },
+            // },
             maintainAspectRatio:false,
+            responsive: true,
             scales: {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true
                     }
                 }]
-            }
+            },
+            tooltips: {
+                enabled: false
+              }
+
         }
     });
 
@@ -162,7 +194,7 @@ function SELECTION(inputArr){
         }
 
         let min = i;
-       //5 var min2=min;
+      
         myChart.data.datasets[0].backgroundColor[i]='rgba(0,0,132, 1)';
         
        
@@ -219,32 +251,82 @@ function SELECTION(inputArr){
        
         i=i+1;
     
-    },1000);
+    },500);
 
-
+    Sort(inputArr,inputArr);
 
 }
 
 
-function Sel_sort(){
 
 
-    COUNT=0;
-    bar_colour=[];
-    border_colour=[];
-    let inp_arr=[10,9,35,43,76,60,70,21,34,21,54,21,34,75,67,3];
+function Generate_Array(){
 
-    for(var ii=0;ii<inp_arr.length;ii++){
-        bar_colour.push(Rgb(0.3));
-        border_colour.push(Rgb(1));
+    
+    
+    var Arr=[];
+
+    for(var i=0;i<12;i++){
+        Arr.push(randomNumber(5,50));
     }
 
-    Sort(inp_arr,inp_arr);
+    return Arr;
+}
+
+
+function Sel_sort(V=2){
+
     
-    SELECTION(inp_arr);
-    console.log(d1);
-    //Time_Compx();
- 
+   
+    if(V==2){
+
+        clearBox('footer1');
+        clearBox('can_left');
+        console.log('ENETETETETE : ');
+        var inp_arr=document.getElementById('input_array').value;
+        inp_arr=inp_arr.split(',');
+        document.getElementById('input_array').value='';
+
+    }
+
+    else{
+
+        clearBox('footer1');
+        clearBox('can_left');
+        inp_arr=Generate_Array();
+    }
+
+
+    if(inp_arr[0]!='' && !inp_arr.some(isNaN)){
+        console.log('awdqwi : ');
+    
+    try{
+        
+        COUNT=0;
+        bar_colour=[];
+        border_colour=[];
+
+        for(var ii=0;ii<inp_arr.length;ii++){
+            bar_colour.push(Rgb(0.3));
+            border_colour.push(Rgb(1));
+        }
+
+        Sort(inp_arr,inp_arr);
+        SELECTION(inp_arr);    
+        //Time_Compx();
+
+        document.getElementById('input_array').placevalue='Enter Your Array ';
+        
+    }
+    catch(err){
+        console.log('CATCH');
+        document.getElementById('input_array').placevalue='Please enter Correctlly !!';
+    }
+    }
+    else{
+        console.log('In console')
+        document.getElementById('input_array').placeholder='Please enter Correctlly !!';
+    }
 
 }
 
