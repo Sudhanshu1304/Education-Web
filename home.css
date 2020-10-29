@@ -6,6 +6,8 @@ body{
     color: white;
     /* height: 853px; */
     height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -74,12 +76,12 @@ li{
 footer{
     
     background-color: rgb(0, 0, 0);
-    height:20% !important;
+    height:25% !important;
 }
 
 #canvas{
     background-color: rgb(241, 241, 241);
-    height: 70%;
+    height: 65%;
     width: 100%;
     display: flex;
 }
@@ -95,11 +97,14 @@ footer{
 }
 
 .div_footer{
-    height: 100% ;
-    width: 300px !important;
+    height: 190px !important;
+    width: 350px !important;
+    scrollbar-width: thin;
 }
 .can_footer{
+
     height: 90% !important;
+    scrollbar-width: thin;
     /* width: 100% !important; */
 }
 
@@ -107,6 +112,14 @@ footer{
 /* This Gives Our Footer Element to Contain the Overflow using scrole Bar  */
 
  .horizontal-scroll{
-  overflow-y: auto;
-  overflow-wrap: inherit;
+
+  overflow-y: hidden;
+  /* overflow-x: scroll; */
+  overflow-wrap: normal;
+  
+  
 } 
+
+::-webkit-scrollbar{
+    scrollbar-width: thin;
+}

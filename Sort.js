@@ -23,18 +23,23 @@ function getRandomColor() {
     return color;
 }
 
+var bar_colour=[]
+var border_colour=[]
+/// GET RANDOM COL IN RGB
+
+function Rgb(opacity) {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return "rgb(" + r + "," + g + "," + b + ","+ opacity + ")";
+}
+
 /////////////////////////   FOOTER GRAPHS
 var COUNT=0;
 
 function Sort2(x,y){
 
-    
-    var al=[];
-    for(var ii=0;ii<x.length;ii++){
-        al.push(getRandomColor());
-    }
 
-    console.log(al);
 
     var foot=document.getElementById('footer1');
     var DIV=document.createElement('div');
@@ -70,37 +75,12 @@ function Sort2(x,y){
                 label: 'Pass '+COUNT,
                 data: y,//[12, 19, 3, 5, 2, 3],
                 
-                backgroundColor: [
+                 backgroundColor: bar_colour
                         
-                     'rgba(255, 99, 132, 0.2)',
-                     'rgba(54, 162, 235, 0.2)',
-                     'rgba(255, 206, 86, 0.2)',
-                     'rgba(75, 192, 192, 0.2)',
-                     'rgba(153, 102, 255, 0.2)',
-                     'rgba(255, 159, 64, 0.2)',
-                     'rgba(25, 109, 64, 0.2)',
-                     'rgba(255, 99, 64, 0.2)',
-                     'rgba(55, 109, 84, 0.2)',
-                     'rgba(255, 9, 64, 0.2)',
-                     'rgba(205, 159, 64, 0.2)',
-                     'rgba(250, 159, 60, 0.2)',
-                 ]
+                
                 ,
-                borderColor: [
+                 borderColor:border_colour,
 
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255, 99, 132, 1)',
-                     'rgba(54, 162, 235, 1)',
-                     'rgba(255, 206, 86, 1)',
-                     'rgba(75, 192, 192, 1)',
-                     'rgba(153, 102, 255, 1)'
-
-                ],
                 borderWidth: 1
             }]
         },
@@ -124,12 +104,11 @@ var myChart;
 
 function Sort(x,y){
 
-    var al=[];
-    for(var ii=0;ii<x.length;ii++){
-        al.push(getRandomColor());
-    }
+  
+    
 
-    console.log(al);
+
+   
 
     var ctx = document.getElementById('can_left').getContext('2d');
     myChart = new Chart(ctx, {
@@ -144,36 +123,9 @@ function Sort(x,y){
                 label: '# of Votes',
                 data: y,
                 
-                backgroundColor: [
-
-                     'rgba(255, 99, 132, 0.2)',
-                     'rgba(54, 162, 235, 0.2)',
-                     'rgba(255, 206, 86, 0.2)',
-                     'rgba(75, 192, 192, 0.2)',
-                     'rgba(153, 102, 255, 0.2)',
-                     'rgba(255, 159, 64, 0.2)',
-                     'rgba(25, 109, 64, 0.2)',
-                     'rgba(255, 99, 64, 0.2)',
-                     'rgba(55, 109, 84, 0.2)',
-                     'rgba(255, 9, 64, 0.2)',
-                     'rgba(205, 159, 64, 0.2)',
-                     'rgba(250, 159, 60, 0.2)',
-                 ]
+                backgroundColor: bar_colour
                 ,
-                borderColor: [
-
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(54, 162, 235, 1)',
-                     'rgba(255, 206, 86, 1)',
-                     'rgba(75, 192, 192, 1)',
-                     'rgba(153, 102, 255, 1)',
-
-                ],
+                borderColor: border_colour,
                 borderWidth: 1
             }]
         },
@@ -236,8 +188,13 @@ function SELECTION(inputArr){
 
         var temp=myChart.data.datasets[0].backgroundColor[min];
         myChart.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
+        //
+        myChart2.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
+
         console.log('**OUT**');
         myChart.update();
+        //
+        myChart2.update();
         //myChart.data.labels=inputArr;
         //myChart.data.datasets[0].data=inputArr;
         //var temp2=myChart.data.datasets[0].borderColor[i];
@@ -247,6 +204,13 @@ function SELECTION(inputArr){
         myChart.data.datasets[0].data=inputArr;
         
         //myChart.update();
+        //myChart.data.datasets[0].backgroundColor[min]=temp;
+        //
+        myChart2.data.datasets[0].backgroundColor[min]=temp;
+        
+        
+        myChart.data.datasets[0].backgroundColor[i]='rgba(255, 99, 132, 0.2)';
+        
         myChart.data.datasets[0].backgroundColor[min]=temp;
         myChart.data.datasets[0].backgroundColor[i]='rgba(255, 99, 132, 0.2)';
         
@@ -263,8 +227,18 @@ function SELECTION(inputArr){
 
 
 function Sel_sort(){
+
+
     COUNT=0;
-    let inp_arr=[10,9,35,43,76,21,54,21,34,75,67,3];
+    bar_colour=[];
+    border_colour=[];
+    let inp_arr=[10,9,35,43,76,60,70,21,34,21,54,21,34,75,67,3];
+
+    for(var ii=0;ii<inp_arr.length;ii++){
+        bar_colour.push(Rgb(0.3));
+        border_colour.push(Rgb(1));
+    }
+
     Sort(inp_arr,inp_arr);
     
     SELECTION(inp_arr);
@@ -307,7 +281,7 @@ function ARRA(arr,Length){
 
         
         
-    },1000);
+    },100);
 
 
 }
