@@ -116,7 +116,7 @@ var myChart;
 
 function Sort(x,y){
 
-    clearBox('can_left');
+    
     var ctx = document.getElementById('can_left').getContext('2d');
     myChart = new Chart(ctx, {
 
@@ -137,26 +137,7 @@ function Sort(x,y){
             }]
         },
         options: {
-            // maintainAspectRatio:false,
-            // scales: {
-            //     yAxes: [{
-            //         ticks: {
-            //             beginAtZero: true
-            //         }
-            //     }]
-            // },
-            // tooltips: {
-            //     enabled: false
-            //   },
-            //   showTooltips:false,
-            //   hover: {mode: null},
-            //   states: {
-            //     hover: {
-            //         filter: {
-            //             type: 'none',
-            //         }
-            //     },
-            // },
+            
             maintainAspectRatio:false,
             responsive: true,
             scales: {
@@ -214,30 +195,26 @@ function SELECTION(inputArr){
              inputArr[min] = tmp;   
 
         }
-
+        console.log('OUR ARR :',inputArr);
         Sort2(inputArr,inputArr);
         COUNT=COUNT+1;
 
         var temp=myChart.data.datasets[0].backgroundColor[min];
         myChart.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
-        //
+        
         myChart2.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
 
-        console.log('**OUT**');
+        
         myChart.update();
-        //
+    
         myChart2.update();
-        //myChart.data.labels=inputArr;
-        //myChart.data.datasets[0].data=inputArr;
-        //var temp2=myChart.data.datasets[0].borderColor[i];
+        
         console.log('MIN : ',min);
         
         myChart.data.labels=inputArr;
         myChart.data.datasets[0].data=inputArr;
         
-        //myChart.update();
-        //myChart.data.datasets[0].backgroundColor[min]=temp;
-        //
+        
         myChart2.data.datasets[0].backgroundColor[min]=temp;
         
         
@@ -245,13 +222,10 @@ function SELECTION(inputArr){
         
         myChart.data.datasets[0].backgroundColor[min]=temp;
         myChart.data.datasets[0].backgroundColor[i]='rgba(255, 99, 132, 0.2)';
-        
-        
-        //myChart.data.datasets[0].backgroundColor[i]=temp2;
-       
+    
         i=i+1;
     
-    },500);
+    },1000);
 
     Sort(inputArr,inputArr);
 
@@ -262,11 +236,9 @@ function SELECTION(inputArr){
 
 function Generate_Array(){
 
-    
-    
     var Arr=[];
 
-    for(var i=0;i<12;i++){
+    for(var i=0;i<10;i++){
         Arr.push(randomNumber(5,50));
     }
 
@@ -284,8 +256,9 @@ function Sel_sort(V=2){
         clearBox('can_left');
         console.log('ENETETETETE : ');
         var inp_arr=document.getElementById('input_array').value;
-        inp_arr=inp_arr.split(',');
+        inp_arr=inp_arr.split(',').map(Number);
         document.getElementById('input_array').value='';
+        console.log('VALUE OD ARR 1 : ',inp_arr);
 
     }
 
@@ -301,7 +274,7 @@ function Sel_sort(V=2){
         console.log('awdqwi : ');
     
     try{
-        
+        console.log('VALUE OD ARR 2 : ',inp_arr);
         COUNT=0;
         bar_colour=[];
         border_colour=[];
@@ -313,7 +286,7 @@ function Sel_sort(V=2){
 
         Sort(inp_arr,inp_arr);
         SELECTION(inp_arr);    
-        //Time_Compx();
+        Time_Compx();
 
         document.getElementById('input_array').placevalue='Enter Your Array ';
         
@@ -373,6 +346,7 @@ function ARRA(arr,Length){
 
 function Time_Compx(){
 
+    console.log("*&^*&%%&%^&");
     var X=[0,2,4,6,8,10,12,14,16,18,20];
     var Y1=[];
     var Y2=[];
@@ -386,8 +360,8 @@ function Time_Compx(){
         Y3.push(Math.log10(X[i]));
     }
 
-    var ctx = document.getElementById('graph').getContext('2d');
-    curves=new Chart(ctx,{
+    var ctx3 = document.getElementById('can_right').getContext('2d');
+    curves=new Chart(ctx3,{
         type:'line',
         data:{
             labels:X,
@@ -405,6 +379,22 @@ function Time_Compx(){
     {
         //data:Y4
     }]
+        },
+        options: {
+            
+            maintainAspectRatio:false,
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            tooltips: {
+                enabled: false
+              }
+
         }
     })
 
