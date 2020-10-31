@@ -225,7 +225,7 @@ function SELECTION(inputArr){
     
         i=i+1;
     
-    },1000);
+    },50);
 
     Sort(inputArr,inputArr);
 
