@@ -57,6 +57,7 @@ li{
 main{
     position: relative;
     bottom: 10px !important;
+    height: 100%;
 }
 
 button{
@@ -66,7 +67,9 @@ button{
 }
 #up_half{
     
+    object-fit: fill !important;
     height: 90%;
+
     /* width: 100%; */
     /* padding-right: 4%; */
     background-color: deeppink;
@@ -74,6 +77,9 @@ button{
 }
 .com_div1{
     /* position: relative; */
+    
+    /* display: flex; 
+    flex-direction: column; */
    
     width: 90%;
     /* padding-right: 1%; */
@@ -96,10 +102,11 @@ button{
 
 footer{
     
-    resize: vertical;
-    overflow: auto;
+    /* resize: vertical; */
+     /* display: flex; */
+    /*flex-direction: column; */
     
-
+    object-fit: fill !important;
     border-color: darkgreen;
     background-color: rgb(0, 0, 0);
     /* height:25% !important; */
@@ -138,7 +145,8 @@ footer{
 
 .div_footer{
     
-    
+   
+    object-fit: fill !important;
     height: 100%;
     position: relative;
     bottom: 10px !important;
@@ -157,7 +165,8 @@ footer{
 }
 
 .can_footer{
-
+   
+    object-fit: fill !important;
     position: relative;
     /* resize: vertical; */
     /* height: 90% ; */
