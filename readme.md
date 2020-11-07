@@ -14,7 +14,7 @@ This is my first project with JS.
 
 <br>
 
-> **AIM** : *To Show Algorithum in action*.
+> **AIM** : **To Show Algorithum in action**.
 
 <br>
 
