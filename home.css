@@ -101,9 +101,12 @@ main{
 
 #main_head_head{
     position: relative;
+    /* border-color: black;
+    //border-bottom-color: black; */
+    border-bottom: 1px solid rgb(3, 3, 3);
     height: 10%;
     display: flex;
-    background-color: rgb(135, 222, 164);
+    background-color: rgb(240, 60, 60);
 }
 
 
@@ -120,8 +123,31 @@ button{
 
     padding: 2px;
     margin: 2px;
+    /* //border-radius: 15px; */
+    
 }
 
+#random{
+    
+    font-size: large;
+    border-radius: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(19, 148, 223);
+    border-width: 4px;
+    border-color: rgb(221, 240, 241);
+    
+}
+
+#but1{
+    border-radius: 15px;
+    width: 100px;
+    margin-top: 5px;
+    font-size: medium;
+    background-color: rgb(19, 148, 223);
+    border-width: 4px;
+    border-color: rgb(221, 240, 241);
+}
 #canvas{
     
     position: relative;
@@ -136,14 +162,17 @@ button{
 }
 
 #canvas_left{
+    
     /* position: relative; */
     width: 70%;
+    
     
 }
 
 
 #canvas_right{
     /* position: relative; */
+    border-color: black;
     width: 30%;
     padding-right: 10px;
     background-color: rgb(255, 255, 255);

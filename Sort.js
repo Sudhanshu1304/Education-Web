@@ -127,7 +127,7 @@ function Sort(x,y){
             datasets: [{
                 
                 
-                label: '# of Votes',
+                //label: '# of Votes',
                 data: y,
                 
                 backgroundColor: bar_colour
@@ -138,6 +138,13 @@ function Sort(x,y){
         },
         options: {
             
+            legend: {
+                labels: {
+                    fontColor: "rgb(10, 0, 0,1)",
+                    fontSize: 18
+                }
+            },
+
             maintainAspectRatio:false,
             responsive: true,
             scales: {
@@ -168,6 +175,7 @@ function SELECTION(inputArr){
     let n = inputArr.length;
     var i=0;
 
+    
 
     var v=setInterval(function(){
         if(i>=n){
@@ -203,8 +211,7 @@ function SELECTION(inputArr){
         myChart.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
         
         myChart2.data.datasets[0].backgroundColor[min]='rgba(0,0,132, 1)';
-
-        
+        myChart.data.datasets[0].label='Selection Sort';    
         myChart.update();
     
         myChart2.update();
@@ -225,7 +232,7 @@ function SELECTION(inputArr){
     
         i=i+1;
     
-    },50);
+    },100);
 
     Sort(inputArr,inputArr);
 
@@ -238,8 +245,8 @@ function Generate_Array(){
 
     var Arr=[];
 
-    for(var i=0;i<10;i++){
-        Arr.push(randomNumber(5,50));
+    for(var i=0;i<100;i++){
+        Arr.push(randomNumber(5,100));
     }
 
     return Arr;
@@ -266,6 +273,7 @@ function Sel_sort(V=2){
 
         clearBox('footer1');
         clearBox('can_left');
+        document.getElementById('input_array').value=''
         inp_arr=Generate_Array();
     }
 
@@ -304,42 +312,42 @@ function Sel_sort(V=2){
 }
 
 
-// This Function can help in COMPARING SPEED OF DIFFERENT ALGORITIUMNS
+// // This Function can help in COMPARING SPEED OF DIFFERENT ALGORITIUMNS
 
-function ARRA(arr,Length){
+// function ARRA(arr,Length){
 
-    console.log(arr);
-    c=0;
-    var main_len=arr.length/Length;
-    var initial=0;
-    var End=initial+Length;
+//     console.log(arr);
+//     c=0;
+//     var main_len=arr.length/Length;
+//     var initial=0;
+//     var End=initial+Length;
 
     
-    Sort(arr.slice(initial,Length),arr.slice(initial,Length));
+//     Sort(arr.slice(initial,Length),arr.slice(initial,Length));
 
-    var v=setInterval(function(){
+//     var v=setInterval(function(){
 
-        c=c+1;
-        if(c>=main_len-1){
-            clearInterval(v);
-        }
-        initial=End;
-        End=initial+Length;
-        console.log('C is : ',c,initial,End);
+//         c=c+1;
+//         if(c>=main_len-1){
+//             clearInterval(v);
+//         }
+//         initial=End;
+//         End=initial+Length;
+//         console.log('C is : ',c,initial,End);
         
 
-        var DATA=arr.slice(initial,End);
-        myChart.data.labels=DATA;
-        myChart.data.datasets[0].data=DATA;
+//         var DATA=arr.slice(initial,End);
+//         myChart.data.labels=DATA;
+//         myChart.data.datasets[0].data=DATA;
         
-        myChart.update();
+//         myChart.update();
 
         
         
-    },100);
+//     },100);
 
 
-}
+// }
 
 
 
@@ -354,10 +362,12 @@ function Time_Compx(){
     var Y4=[];
 
     for (var i=0;i<X.length;i++){
-        Y1.push(X[i]);
+        Y1.push(X[i]**2);
         Y2.push(X[i]**2);
         //Y3.push(X[i]**3);
-        Y3.push(Math.log10(X[i]));
+        //Y3.push(Math.log10(X[i]));
+        Y3.push(X[i]**2);
+
     }
 
     var ctx3 = document.getElementById('can_right').getContext('2d');
@@ -366,26 +376,48 @@ function Time_Compx(){
         data:{
             labels:X,
             datasets:[{
+                
+                label:'Worst case O(n^2)',
                 pointHoverBorderWidth:'10px',
                 pointHoverRadius:'5px',
-                backgroundColour:'red',
+                backgroundColour:'rgb(3, 169, 252)',
+                borderColor:"rgb(3, 169, 252)",
                 data:Y1
             },
         {
-            data:Y2
+            data:Y2,
+            label:'Best Case O(n^2)',
+            backgroundColour:'red',
+            borderColor:"red",
+
         },{
-            data:Y3
+            data:Y3,
+            label:'Average Case  O(n^2)',
+            backgroundColour:'blue',
+            borderColor:"blue",
         },
-    {
-        //data:Y4
-    }]
+    ]
         },
         options: {
             
             maintainAspectRatio:false,
             responsive: true,
             scales: {
-                yAxes: [{
+
+                xAxes: [{
+                    gridLines: {
+                        //drawOnChartArea: false
+                        opacity:5
+                        //color: "rgba(0, 0, 0, 0)",
+                    }
+                }],
+
+                yAxes: [{ 
+                    gridLines: {
+                        opacity:5,
+                        //drawOnChartArea: false
+                    //color: "rgba(0, 0, 0, 0)",
+                    },
                     ticks: {
                         beginAtZero: true
                     }
