@@ -6,17 +6,21 @@
 
 <br>
 
+### ***Description*** 
+
 This is my first project with JS.
 
 <br>
 
 > **AIM** : *To Show Algorithum in action*.
 
+<br>
+
 ### **Features**
 
 * Realtime Pass's
 * Time Complexity
-* Can get random graph
+* We Can get random graph
 * We could also add User defined array
 
 
