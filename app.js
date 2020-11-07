@@ -321,12 +321,12 @@ function Sel_sort(V=2){
     }
     catch(err){
         console.log('CATCH');
-        document.getElementById('input_array').placevalue='Please enter Correctlly !!';
+        document.getElementById('input_array').placevalue='Please enter correctlly !!';
     }
     }
     else{
         console.log('In console')
-        document.getElementById('input_array').placeholder='Please enter Correctlly !!';
+        document.getElementById('input_array').placeholder='Please enter correctlly !!';
     }
 
 }
