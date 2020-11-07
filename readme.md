@@ -22,7 +22,7 @@ This is my first project with JS.
 
 * Realtime Pass's
 * Time Complexity
-* We Can get random graph
+* We Can get random array of numbers to graph
 * We could also add User defined array
 
 
