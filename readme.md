@@ -5,7 +5,7 @@
 ![](ezgif.com-gif-maker.gif)
 
 
-CSS was done with the help of  [Pratyush Jain](https://github.com/pratyushjain122)
+***Frontend was done with the help of  [Pratyush Jain](https://github.com/pratyushjain122)***
 <br>
 
 ### ***Description*** 
@@ -14,7 +14,7 @@ This is my first project with JS.
 
 <br>
 
-> **AIM** : *To Show Algorithum in action*.
+> **AIM** : **To Show Algorithum in action**.
 
 <br>
 
@@ -22,7 +22,7 @@ This is my first project with JS.
 
 * Realtime Pass's
 * Time Complexity
-* We Can get random graph
+* We Can get random array of numbers to graph
 * We could also add User defined array
 
 
