@@ -1,4 +1,6 @@
 // This is similar to time.sleep() in python so it cannot be used with Charts
+var SPEED;
+Ranm=30;
 
 function sleep(milliseconds) { 
     let timeStart = new Date().getTime(); 
@@ -94,6 +96,12 @@ function Sort2(x,y){
             }]
         },
         options: {
+            legend: {
+                labels: {
+                    fontColor: "white",
+                    fontSize: 18
+                }
+            },
            
             responsive: true,
             scales: {
@@ -232,7 +240,7 @@ function SELECTION(inputArr){
     
         i=i+1;
     
-    },100);
+    },SPEED);
 
     Sort(inputArr,inputArr);
 
@@ -245,7 +253,7 @@ function Generate_Array(){
 
     var Arr=[];
 
-    for(var i=0;i<100;i++){
+    for(var i=0;i<Ranm;i++){
         Arr.push(randomNumber(5,100));
     }
 
@@ -256,13 +264,12 @@ function Generate_Array(){
 function Sel_sort(V=2){
 
     
-   
+   var inp_arr;
     if(V==2){
 
         clearBox('footer1');
         clearBox('can_left');
-        console.log('ENETETETETE : ');
-        var inp_arr=document.getElementById('input_array').value;
+        inp_arr=document.getElementById('input_array').value;
         inp_arr=inp_arr.split(',').map(Number);
         document.getElementById('input_array').value='';
         console.log('VALUE OD ARR 1 : ',inp_arr);
@@ -273,13 +280,16 @@ function Sel_sort(V=2){
 
         clearBox('footer1');
         clearBox('can_left');
-        document.getElementById('input_array').value=''
+        clearBox('input_array');
+        document.getElementById('input_array').value='';
         inp_arr=Generate_Array();
+        console.log('VALUE OD ARR 1 : ',inp_arr);
+
     }
 
 
     if(inp_arr[0]!='' && !inp_arr.some(isNaN)){
-        console.log('awdqwi : ');
+        
     
     try{
         console.log('VALUE OD ARR 2 : ',inp_arr);
@@ -290,6 +300,16 @@ function Sel_sort(V=2){
         for(var ii=0;ii<inp_arr.length;ii++){
             bar_colour.push(Rgb(0.3));
             border_colour.push(Rgb(1));
+        }
+
+        if(inp_arr.length<=10){
+            SPEED=1000;
+        }
+        if(inp_arr.length>10 && inp_arr.length<20){
+            SPEED=600;
+        }
+        else{
+            SPEED=400;
         }
 
         Sort(inp_arr,inp_arr);
