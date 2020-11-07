@@ -5,7 +5,7 @@
 ![](ezgif.com-gif-maker.gif)
 
 
-Frontend was done with the help of  [Pratyush Jain](https://github.com/pratyushjain122)
+***Frontend was done with the help of  [Pratyush Jain](https://github.com/pratyushjain122)***
 <br>
 
 ### ***Description*** 
